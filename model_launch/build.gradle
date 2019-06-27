@@ -1,0 +1,16 @@
+apply from: '../module.build.gradle'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        if (isBuildModule.toBoolean()) {
+            //独立运行时的AppID
+            applicationId 'com.yunhuakeji.launch'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+}

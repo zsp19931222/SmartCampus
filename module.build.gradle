@@ -1,0 +1,89 @@
+//将每个组件的build.gradle公共部分抽取出一个module.build.gradle,组件中引入module.build.gradle即可
+if (isBuildModule.toBoolean()) {
+    //作为独立App应用运行
+    apply plugin: 'com.android.application'
+} else {
+    //作为组件运行
+    apply plugin: 'com.android.library'
+}
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        //阿里路由框架配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+    sourceSets {
+        main {
+            if (isBuildModule.toBoolean()) {
+                //独立运行
+                manifest.srcFile 'src/main/alone/AndroidManifest.xml'
+            } else {
+                //合并到宿主
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                resources {
+                    //正式版本时，排除alone文件夹下所有调试文件
+                    exclude 'src/main/alone/*'
+                }
+            }
+        }
+    }
+    buildTypes {
+    }
+    dataBinding {
+        enabled true
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+    flavorDimensions "default"
+    productFlavors {
+        //阿里云
+        aliyun {
+            buildConfigField("String", "BASE_URL", "\"http://47.111.20.81:80/\"")
+            buildConfigField("String", "IMAGE_UPLOAD_URL", "\"http://47.111.20.81:80/\"")
+            buildConfigField("String", "H5_BASE_URL", "\"http://47.111.20.81/\"")
+            buildConfigField("String", "PROJECT_NAME", "\"exuedaoapp\"")
+            buildConfigField("String", "H5_PROJECT_NAME", "\"exuedaoweb/\"")
+        }
+        //20测试服务器
+        cs20 {
+            buildConfigField("String", "BASE_URL", "\"http://192.168.2.20/\"")
+            buildConfigField("String", "IMAGE_UPLOAD_URL", "\"http://192.168.2.20/\"")
+            buildConfigField("String", "H5_BASE_URL", "\"http://192.168.2.20/\"")
+            buildConfigField("String", "PROJECT_NAME", "\"exuedaoapp\"")
+            buildConfigField("String", "H5_PROJECT_NAME", "\"learn/\"")
+        }
+        //17测试服务器
+        cs17 {
+            buildConfigField("String", "BASE_URL", "\"http://192.168.2.17:12002/\"")
+            buildConfigField("String", "IMAGE_UPLOAD_URL", "\"http://192.168.2.17/\"")
+            buildConfigField("String", "H5_BASE_URL", "\"http://192.168.2.17:8080/\"")
+            buildConfigField("String", "PROJECT_NAME", "\"\"")
+            buildConfigField("String", "H5_PROJECT_NAME", "\"wph5/\"")
+        }
+        //内江服务器
+        neijiang {
+            buildConfigField("String", "BASE_URL", "\"http://nginx.platform.njvtc.cn:8116/\"")
+            buildConfigField("String", "IMAGE_UPLOAD_URL", "\"http://192.168.2.17/\"")
+            buildConfigField("String", "H5_BASE_URL", "\"http://nginx.platform.njvtc.cn:8116/\"")
+            buildConfigField("String", "PROJECT_NAME", "\"exuedaoapp\"")
+            buildConfigField("String", "H5_PROJECT_NAME", "\"learn/\"")
+        }
+
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //组件依赖基础库
+    api project(':librarybase')
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+}

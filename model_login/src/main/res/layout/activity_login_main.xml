@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yunhuakeji.modellogin.activity.LoginViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/warningColor">
+
+        <include layout="@layout/view_title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="117dp"
+            android:text="@{viewModel.text1}"
+            android:textColor="#ff555555"
+            android:textSize="31sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="157dp"
+            android:text="@{viewModel.text2}"
+
+            android:textColor="#ff777777"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="202dp"
+            android:text="@{viewModel.text3}"
+            android:textColor="#ff555555"
+
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="236dp"
+            android:text="@{viewModel.text4}"
+            android:textColor="#ffbbbbbb"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="274dp"
+            android:layout_marginEnd="@dimen/s_24"
+            android:background="#f0f" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="295dp"
+            android:text="@{viewModel.text5}"
+            android:textColor="#ff555555"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="330dp"
+            android:text="@{viewModel.text6}"
+            android:textColor="#ffbbbbbb"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="367dp"
+            android:layout_marginEnd="@dimen/s_24"
+            android:background="#f0f" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="383dp"
+            android:layout_marginEnd="24dp"
+            android:text="@{viewModel.text7}"
+            android:textColor="#ff3da8f5"
+            android:textSize="12sp" />
+
+        <Button
+            android:layout_width="260dp"
+            android:layout_height="46dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="432dp"
+            android:text="@{viewModel.button}"
+            binding:onClickCommand="@{viewModel.onClickBindingCommand}"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="534dp"
+            android:text="@{viewModel.text8}"
+            android:textColor="#ff3da8f5"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+</layout>
