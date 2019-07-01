@@ -12,7 +12,7 @@
         android:name=".AppApplication"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
         android:theme="@style/AppTheme">
-        <activity android:name="com.yunhuakeji.model_launch.activity.LaunchActivity">
+        <activity android:name="com.yunhuakeji.modellogin.activity.LoginMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

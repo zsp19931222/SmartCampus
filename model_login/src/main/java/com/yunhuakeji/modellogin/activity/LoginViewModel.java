@@ -40,13 +40,15 @@ public class LoginViewModel extends BaseViewModel {
     public ObservableField<String> text7 = new ObservableField<>("忘记密码？");
     public ObservableField<String> text8 = new ObservableField<>("zsp");
     public ObservableField<String> button = new ObservableField<>("获取数据");
+    public ObservableField<Object> url=new ObservableField<>();
+    public ObservableField<Integer> placeholderRes=new ObservableField<>();
+    public ObservableField<Integer> radius=new ObservableField<>();
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
     }
 
     public BindingCommand onClickBindingCommand = new BindingCommand(() -> getData());
-
     private void getData() {
         try {
             Map<String, String> parameter = ParameterUtil.getInstance().getParameter();
@@ -68,4 +70,5 @@ public class LoginViewModel extends BaseViewModel {
         }
 
     }
+
 }

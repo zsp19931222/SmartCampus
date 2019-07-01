@@ -104,8 +104,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="432dp"
             android:text="@{viewModel.button}"
-            binding:onClickCommand="@{viewModel.onClickBindingCommand}"
-            />
+            binding:onClickCommand="@{viewModel.onClickBindingCommand}" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -115,6 +114,28 @@
             android:text="@{viewModel.text8}"
             android:textColor="#ff3da8f5"
             android:textSize="12sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="openPictureSelector"
+            android:text="打开相机" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:onClick="openPictureSelector1"
+            android:text="打开相册" />
+
+        <ImageView
+            binding:url="@{viewModel.url}"
+            binding:placeholderRes="@{viewModel.placeholderRes}"
+            binding:radius="@{viewModel.radius}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
 </layout>

@@ -13,7 +13,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
         tools:replace="android:name,android:icon,android:label,android:theme">
-        <activity android:name=".activity.LoginMainActivity">
+        <activity android:name="com.yunhuakeji.modellogin.activity.LoginMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

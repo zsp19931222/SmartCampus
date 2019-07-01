@@ -12,6 +12,4 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    //自适应布局
-    api rootProject.ext.dependencies.autolayout
 }
